@@ -46,7 +46,7 @@ export const ClassroomSelector: React.FC<ClassroomSelectorProps> = ({
       layoutType: "UShape",
       rows: 5,
       columns: 8,
-      capacity: 32,
+      capacity: 40,
     },
     {
       id: "3",
@@ -54,7 +54,7 @@ export const ClassroomSelector: React.FC<ClassroomSelectorProps> = ({
       layoutType: "Bus",
       rows: 10,
       columns: 5,
-      capacity: 40,
+      capacity: 50,
     },
     {
       id: "4",
@@ -62,7 +62,7 @@ export const ClassroomSelector: React.FC<ClassroomSelectorProps> = ({
       layoutType: "Lab",
       rows: 8,
       columns: 6,
-      capacity: 24,
+      capacity: 48,
     },
     {
       id: "5",
@@ -70,7 +70,7 @@ export const ClassroomSelector: React.FC<ClassroomSelectorProps> = ({
       layoutType: "Exam",
       rows: 10,
       columns: 10,
-      capacity: 50,
+      capacity: 100,
     },
     {
       id: "6",

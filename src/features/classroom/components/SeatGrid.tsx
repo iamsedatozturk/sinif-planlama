@@ -2,7 +2,7 @@
  * Seat Grid Component - Koltuk Düzeni
  */
 import React from "react";
-import { useDroppable, DragOverlay } from "@dnd-kit/core";
+import { useDroppable } from "@dnd-kit/core";
 import {
   Avatar,
   AvatarFallback,

@@ -9,7 +9,6 @@ import {
   CardTitle,
 } from "@/shared/components/ui/card";
 import { Button } from "@/shared/components/ui/button";
-import { Badge } from "@/shared/components/ui/badge";
 import {
   Avatar,
   AvatarFallback,
@@ -19,11 +18,8 @@ import {
   FaPhone,
   FaEnvelope,
   FaRegCommentDots,
-  FaCalendarAlt,
   FaUsers,
   FaUserTimes,
-  FaCog,
-  FaDownload,
 } from "react-icons/fa";
 
 interface Student {
@@ -56,7 +52,6 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
   seats,
   students,
   onRemoveSelectedStudents,
-  onToggleSeatBlock,
 }) => {
   const selectedStudents = selectedSeats
     .map((seatId) => {
@@ -66,11 +61,6 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
         : null;
     })
     .filter(Boolean) as Student[];
-
-  const selectedEmptySeats = selectedSeats.filter((seatId) => {
-    const seat = seats.find((s) => s.id === seatId);
-    return seat && !seat.studentId;
-  });
 
   return (
     <div className="p-4 space-y-4">
