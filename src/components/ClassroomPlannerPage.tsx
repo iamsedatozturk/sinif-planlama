@@ -5,9 +5,9 @@ import {
   DragOverlay,
   DragStartEvent,
 } from "@dnd-kit/core";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+import { Avatar } from "@/components/ui/Avatar";
 import { FaUsers, FaSearch, FaThLarge, FaUndo, FaSave } from "react-icons/fa";
 import { StudentList } from "./StudentList";
 import { SeatGrid } from "./SeatGrid";
@@ -247,7 +247,7 @@ export const ClassroomPlannerPage: React.FC = () => {
                 <div className="flex items-center space-x-4"></div>
 
                 <div className="flex items-center space-x-2">
-                  <Button variant="outline" size="sm" onClick={handleClearAll}>
+                  <Button variant="solid" size="sm" onClick={handleClearAll}>
                     <FaUndo className="h-4 w-4 mr-2" />
                     Temizle
                   </Button>
@@ -288,15 +288,11 @@ export const ClassroomPlannerPage: React.FC = () => {
         <DragOverlay>
           {draggedStudent && (
             <div className="transform rotate-3 scale-110">
-              <Avatar className="h-12 w-12 border-4 border-primary shadow-2xl">
-                <AvatarImage src={draggedStudent.photoUrl || undefined} />
-                <AvatarFallback className="bg-primary text-primary-foreground font-bold">
-                  {draggedStudent.fullName
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
-                </AvatarFallback>
-              </Avatar>
+              <Avatar
+                className="h-12 w-12 border-4 border-primary shadow-2xl"
+                shape="circle"
+                src={draggedStudent.photoUrl || undefined}
+              />
             </div>
           )}
         </DragOverlay>

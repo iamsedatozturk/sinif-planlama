@@ -1,7 +1,7 @@
 import React from "react";
 import { useDroppable } from "@dnd-kit/core";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { Avatar } from "@/components/ui/Avatar";
+import { Button } from "@/components/ui/Button";
 import { FaTimes } from "react-icons/fa";
 import { cn } from "@/utils/utils";
 
@@ -93,21 +93,11 @@ const DroppableSeat: React.FC<{
         }}
       >
         {student ? (
-          <Avatar className="h-8 w-8">
-            <AvatarImage src={student.photoUrl || undefined} />
-            <AvatarFallback
-              className={cn(
-                "text-xs",
-                !isEmpty
-                  ? "bg-primary-foreground text-primary"
-                  : "bg-gray-200 text-gray-600"
-              )}
-            >
-              {student.fullName
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
-            </AvatarFallback>
+          <Avatar className="h-8 w-8" src={student.photoUrl || undefined}>
+            {student.fullName
+              .split(" ")
+              .map((n) => n[0])
+              .join("")}
           </Avatar>
         ) : (
           <span
@@ -140,7 +130,7 @@ const DroppableSeat: React.FC<{
       {student && (
         <Button
           size="sm"
-          variant="destructive"
+          variant="default"
           className="absolute -top-2 -right-2 h-5 w-5 p-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-20"
           onClick={(e) => {
             e.stopPropagation();

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDraggable } from "@dnd-kit/core";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar } from "@/components/ui/Avatar";
 import { Student, StudentListProps } from "@/proxy/models";
 
 const DraggableStudent: React.FC<{ student: Student }> = ({ student }) => {
@@ -26,14 +26,11 @@ const DraggableStudent: React.FC<{ student: Student }> = ({ student }) => {
       }`}
     >
       <div className="flex flex-col items-center space-y-2 group">
-        <Avatar className="h-10 w-10">
-          <AvatarImage src={student.photoUrl || undefined} />
-          <AvatarFallback className="bg-primary text-primary-foreground">
-            {student.fullName
-              .split(" ")
-              .map((n) => n[0])
-              .join("")}
-          </AvatarFallback>
+        <Avatar className="h-10 w-10" src={student.photoUrl || undefined}>
+          {student.fullName
+            .split(" ")
+            .map((n) => n[0])
+            .join("")}
         </Avatar>
 
         <div className="text-center">

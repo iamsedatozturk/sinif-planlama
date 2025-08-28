@@ -1,7 +1,7 @@
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
+import { Avatar } from "@/components/ui/Avatar";
 import {
   FaPhone,
   FaEnvelope,
@@ -38,10 +38,10 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
     <div className="p-4 space-y-4">
       {/* Statistics */}
       <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-sm">İstatistikler</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-2">
+        <header className="pb-3">
+          <h3 className="text-sm">İstatistikler</h3>
+        </header>
+        <body className="space-y-2">
           <div className="flex justify-between text-sm">
             <span className="text-gray-600">Toplam koltuk:</span>
             <span className="font-medium">{seats.length}</span>
@@ -75,15 +75,15 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
               </span>
             </div>
           </div>
-        </CardContent>
+        </body>
       </Card>
 
       {/* Selection Info */}
       <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-sm">Seçim Bilgisi</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-2">
+        <header className="pb-3">
+          <h3 className="text-sm">Seçim Bilgisi</h3>
+        </header>
+        <body className="space-y-2">
           <div className="flex justify-between text-sm">
             <span className="text-gray-600">Seçili koltuk:</span>
             <span className="font-medium">{selectedSeats.length}</span>
@@ -92,30 +92,26 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
             <span className="text-gray-600">Dolu koltuk:</span>
             <span className="font-medium">{selectedStudents.length}</span>
           </div>
-        </CardContent>
+        </body>
       </Card>
 
       {/* Selected Students */}
       {selectedStudents.length > 0 && (
         <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-sm flex items-center">
+          <header className="pb-3">
+            <h3 className="text-sm flex items-center">
               <FaUsers className="h-4 w-4 mr-2" />
               Seçili Öğrenciler
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
+            </h3>
+          </header>
+          <body className="space-y-3">
             {selectedStudents.map((student) => (
               <div key={student.id} className="flex items-center space-x-3">
-                <Avatar className="h-8 w-8">
-                  <AvatarImage src={student.photoUrl || undefined} />
-                  <AvatarFallback className="text-xs">
-                    {student.fullName
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </AvatarFallback>
-                </Avatar>
+                <Avatar
+                  className="h-8 w-8"
+                  shape="circle"
+                  src={student.photoUrl || undefined}
+                />
                 <div className="flex-1 min-w-0">
                   <div className="text-sm font-medium truncate">
                     {student.fullName}
@@ -123,20 +119,20 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
                 </div>
               </div>
             ))}
-          </CardContent>
+          </body>
         </Card>
       )}
 
       {/* Quick Actions */}
       <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-sm">Hızlı İşlemler</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-2">
+        <header className="pb-3">
+          <h3 className="text-sm">Hızlı İşlemler</h3>
+        </header>
+        <body className="space-y-2">
           {selectedStudents.length > 0 && (
             <>
               <Button
-                variant="outline"
+                variant="default"
                 size="sm"
                 className="w-full justify-start"
               >
@@ -144,7 +140,7 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
                 Toplu Arama
               </Button>
               <Button
-                variant="outline"
+                variant="default"
                 size="sm"
                 className="w-full justify-start"
               >
@@ -152,7 +148,7 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
                 E-posta Gönder
               </Button>
               <Button
-                variant="outline"
+                variant="default"
                 size="sm"
                 className="w-full justify-start"
               >
@@ -165,7 +161,7 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
           {selectedSeats.length > 0 && (
             <>
               <Button
-                variant="outline"
+                variant="default"
                 size="sm"
                 className="w-full justify-start"
                 onClick={onRemoveSelectedStudents}
@@ -175,7 +171,7 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
               </Button>
             </>
           )}
-        </CardContent>
+        </body>
       </Card>
     </div>
   );
