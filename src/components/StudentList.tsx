@@ -1,10 +1,7 @@
 import React from "react";
 import { useDraggable } from "@dnd-kit/core";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/shared/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Student, StudentListProps } from "@/proxy/models";
 
 const DraggableStudent: React.FC<{ student: Student }> = ({ student }) => {
   const { attributes, listeners, setNodeRef, transform, isDragging } =

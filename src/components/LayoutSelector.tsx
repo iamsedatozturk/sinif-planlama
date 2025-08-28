@@ -5,7 +5,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/shared/components/ui/select";
+} from "@/components/ui/select";
 import { layouts } from "@/data/layouts";
 
 interface LayoutSelectorProps {

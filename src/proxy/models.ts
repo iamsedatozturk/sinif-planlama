@@ -34,7 +34,6 @@ export interface Classroom {
   rows: number;
   columns: number;
   capacity: number;
-  metadata: Record<string, any>;
   creationTime: string;
   lastModificationTime: string;
 }

@@ -5,7 +5,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/shared/components/ui/select";
+} from "@/components/ui/select";
+import { Classroom } from "@/proxy/models";
+import { classrooms } from "@/data/classroom";
 
 interface ClassroomSelectorProps {
   selectedClassroom: Classroom | null;
@@ -16,58 +18,6 @@ export const ClassroomSelector: React.FC<ClassroomSelectorProps> = ({
   selectedClassroom,
   onClassroomChange,
 }) => {
-  // Mock classrooms - API'den gelecek (Circle layout kaldırıldı)
-  const classrooms: Classroom[] = [
-    {
-      id: "1",
-      name: "Theater Sınıfı",
-      layoutType: "Theater",
-      rows: 6,
-      columns: 8,
-      capacity: 48,
-    },
-    {
-      id: "2",
-      name: "U-Shape Sınıfı",
-      layoutType: "UShape",
-      rows: 5,
-      columns: 8,
-      capacity: 40,
-    },
-    {
-      id: "3",
-      name: "Bus Sınıfı",
-      layoutType: "Bus",
-      rows: 10,
-      columns: 5,
-      capacity: 50,
-    },
-    {
-      id: "4",
-      name: "Lab Sınıfı",
-      layoutType: "Lab",
-      rows: 8,
-      columns: 6,
-      capacity: 48,
-    },
-    {
-      id: "5",
-      name: "Exam Sınıfı",
-      layoutType: "Exam",
-      rows: 10,
-      columns: 10,
-      capacity: 100,
-    },
-    {
-      id: "6",
-      name: "Grid Sınıfı",
-      layoutType: "Grid",
-      rows: 8,
-      columns: 8,
-      capacity: 64,
-    },
-  ];
-
   const handleClassroomChange = (classroomId: string) => {
     const classroom = classrooms.find((c) => c.id === classroomId);
     if (classroom) {

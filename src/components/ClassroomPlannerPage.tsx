@@ -5,18 +5,13 @@ import {
   DragOverlay,
   DragStartEvent,
 } from "@dnd-kit/core";
-import { Button } from "@/shared/components/ui/button";
-import { Input } from "@/shared/components/ui/input";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/shared/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { FaUsers, FaSearch, FaThLarge, FaUndo, FaSave } from "react-icons/fa";
 import { StudentList } from "./StudentList";
 import { SeatGrid } from "./SeatGrid";
 import { ClassroomSelector } from "./ClassroomSelector";
-import { LayoutSelector } from "./LayoutSelector";
 import { QuickActions } from "./QuickActions";
 import { mockStudents } from "@/data/students";
 import { Classroom, Seat, Student } from "@/proxy/models";

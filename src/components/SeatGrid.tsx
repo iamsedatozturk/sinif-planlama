@@ -1,11 +1,7 @@
 import React from "react";
 import { useDroppable } from "@dnd-kit/core";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/shared/components/ui/avatar";
-import { Button } from "@/shared/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import { FaTimes } from "react-icons/fa";
 import { cn } from "@/utils/utils";
 
