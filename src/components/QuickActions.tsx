@@ -40,6 +40,7 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
       <Card
         bodyClass="md:p-3"
         header={<h3 className="text-sm">İstatistikler</h3>}
+        headerClass="p-2"
       >
         <body className="space-y-2">
           <div className="flex justify-between text-sm">
@@ -56,12 +57,6 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
             <span className="text-gray-600">Boş koltuk:</span>
             <span className="font-medium text-blue-600">
               {seats.filter((s) => !s.studentId && !s.isBlocked).length}
-            </span>
-          </div>
-          <div className="flex justify-between text-sm">
-            <span className="text-gray-600">Bloke koltuk:</span>
-            <span className="font-medium text-red-600">
-              {seats.filter((s) => s.isBlocked).length}
             </span>
           </div>
           <div className="pt-2 border-t">
@@ -81,102 +76,87 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
       {/* Selection Info */}
       <Card
         bodyClass="md:p-3"
-        header={<h3 className="text-sm">Seçim Bilgisi</h3>}
+        header={
+          <h3 className="text-sm">
+            Seçilen Koltuk ({selectedStudents.length})
+          </h3>
+        }
+        headerClass="p-2"
       >
         <body className="space-y-2">
-          <div className="flex justify-between text-sm">
-            <span className="text-gray-600">Seçili koltuk:</span>
-            <span className="font-medium">{selectedSeats.length}</span>
-          </div>
-          <div className="flex justify-between text-sm">
-            <span className="text-gray-600">Dolu koltuk:</span>
-            <span className="font-medium">{selectedStudents.length}</span>
-          </div>
+          {/* Quick Actions */}
+          {selectedStudents.length > 0 && (
+            <Card bodyClass="md:p-3">
+              <body className="flex gap-2 justify-center">
+                {selectedStudents.length > 0 && (
+                  <>
+                    <Button
+                      title="Toplu Arama"
+                      variant="default"
+                      size="sm"
+                      className="flex flex-row rounded-full justify-center items-center"
+                    >
+                      <FaPhone />
+                    </Button>
+                    <Button
+                      title="E-posta Gönder"
+                      variant="default"
+                      size="sm"
+                      className="flex flex-row rounded-full justify-center items-center"
+                    >
+                      <FaEnvelope />
+                    </Button>
+                    <Button
+                      title="SMS Gönder"
+                      variant="default"
+                      size="sm"
+                      className="flex flex-row rounded-full justify-center items-center"
+                    >
+                      <FaRegCommentDots />
+                    </Button>
+                  </>
+                )}
+
+                {selectedSeats.length > 0 && (
+                  <>
+                    <Button
+                      title="Atamaları Kaldır"
+                      variant="default"
+                      size="sm"
+                      className="flex flex-row rounded-full justify-center items-center"
+                      onClick={onRemoveSelectedStudents}
+                    >
+                      <FaUserTimes />
+                    </Button>
+                  </>
+                )}
+              </body>
+            </Card>
+          )}
+          
+          {/* Selected Students */}
+          {selectedStudents.length > 0 && (
+            <Card bodyClass="md:p-3">
+              <body className="space-y-3">
+                {selectedStudents.map((student) => (
+                  <div key={student.id} className="flex items-center space-x-3">
+                    <Avatar
+                      className="h-8 w-8"
+                      shape="circle"
+                      src={student.photoUrl || undefined}
+                    />
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-medium truncate">
+                        {student.fullName}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </body>
+            </Card>
+          )}
         </body>
       </Card>
-
-      {/* Quick Actions */}
-      {selectedStudents.length > 0 && (
-        <Card
-          bodyClass="md:p-3"
-          header={<h3 className="text-sm">Hızlı İşlemler</h3>}
-        >
-          <body className="space-y-2">
-            {selectedStudents.length > 0 && (
-              <>
-                <Button
-                  variant="default"
-                  size="sm"
-                  className="flex flex-row w-full justify-center items-center"
-                >
-                  <FaPhone className="h-4 w-4 mr-2" />
-                  Toplu Arama
-                </Button>
-                <Button
-                  variant="default"
-                  size="sm"
-                  className="flex flex-row w-full justify-center items-center"
-                >
-                  <FaEnvelope className="h-4 w-4 mr-2" />
-                  E-posta Gönder
-                </Button>
-                <Button
-                  variant="default"
-                  size="sm"
-                  className="flex flex-row w-full justify-center items-center"
-                >
-                  <FaRegCommentDots className="h-4 w-4 mr-2" />
-                  SMS Gönder
-                </Button>
-              </>
-            )}
-
-            {selectedSeats.length > 0 && (
-              <>
-                <Button
-                  variant="default"
-                  size="sm"
-                  className="flex flex-row w-full justify-center items-center"
-                  onClick={onRemoveSelectedStudents}
-                >
-                  <FaUserTimes className="h-4 w-4 mr-2" />
-                  Atamaları Kaldır
-                </Button>
-              </>
-            )}
-          </body>
-        </Card>
-      )}
-
-      {/* Selected Students */}
-      {selectedStudents.length > 0 && (
-        <Card
-          bodyClass="md:p-3"
-          header={
-            <h3 className="text-sm flex items-center">
-              <FaUsers className="h-4 w-4 mr-2" />
-              Seçili Öğrenciler
-            </h3>
-          }
-        >
-          <body className="space-y-3">
-            {selectedStudents.map((student) => (
-              <div key={student.id} className="flex items-center space-x-3">
-                <Avatar
-                  className="h-8 w-8"
-                  shape="circle"
-                  src={student.photoUrl || undefined}
-                />
-                <div className="flex-1 min-w-0">
-                  <div className="text-sm font-medium truncate">
-                    {student.fullName}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </body>
-        </Card>
-      )}
     </div>
   );
 };

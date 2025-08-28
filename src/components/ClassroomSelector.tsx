@@ -14,13 +14,14 @@ export const ClassroomSelector: React.FC<ClassroomSelectorProps> = ({
   return (
     <div className="w-full">
       <select
+        id="classroom-selector"
         value={selectedClassroom?.id || ""}
         onChange={(e) =>
           onClassroomChange(
             classrooms.find((c) => c.id === e.target.value) || null
           )
         }
-        className="w-full px-2 py-1 text-sm border border-gray-300 rounded"
+        className="w-full px-2 py-1 border border-gray-300 rounded"
       >
         <option value="">Sınıf seçin...</option>
         {classrooms.map((classroom) => (

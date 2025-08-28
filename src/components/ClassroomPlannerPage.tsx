@@ -6,7 +6,6 @@ import {
   DragStartEvent,
 } from "@dnd-kit/core";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
 import { Avatar } from "@/components/ui/Avatar";
 import {
   FaUsers,
@@ -14,7 +13,6 @@ import {
   FaThLarge,
   FaUndo,
   FaSave,
-  FaAccusoft,
   FaBolt,
 } from "react-icons/fa";
 import { StudentList } from "./StudentList";
@@ -187,7 +185,7 @@ export const ClassroomPlannerPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-6 py-4">
+      <header className="bg-white border-b border-gray-200 px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2">
@@ -233,31 +231,23 @@ export const ClassroomPlannerPage: React.FC = () => {
         <div className="flex h-[calc(100vh-80px)]">
           {/* Left Sidebar - Student List */}
           <div className="w-80 bg-white border-r border-gray-200 flex flex-col">
-            <div className="p-4 border-b border-gray-200">
-              <div className="flex items-center justify-between mb-4">
+            <div className="p-2 border-b border-gray-200">
+              <div className="flex items-center justify-between pb-2">
                 <h2 className="text-lg font-semibold text-gray-900 flex items-center">
                   <FaUsers className="h-5 w-5 mr-2" />
                   Öğrenciler ({unassignedStudents.length})
                 </h2>
               </div>
 
-              {/* Sınıf Seçimi */}
-              <div className="mb-4">
-                <ClassroomSelector
-                  selectedClassroom={selectedClassroom}
-                  onClassroomChange={setSelectedClassroom}
-                />
-              </div>
-
               <div className="space-y-3">
                 <div className="relative">
-                  <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                  <Input
-                    size="sm"
+                  <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 h-3 w-3 text-gray-400" />
+                  <input
+                    id="student-search"
                     placeholder="Öğrenci ara..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10"
+                    className="w-full p-1 pl-8 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
               </div>
@@ -272,8 +262,26 @@ export const ClassroomPlannerPage: React.FC = () => {
 
           {/* Main Content - Seat Grid */}
           <div className="flex-1 flex flex-col">
+            <div className="p-2 border-b border-gray-200">
+              <div className="flex items-center justify-between pb-2">
+                <h2 className="text-lg font-semibold text-gray-900 flex items-center">
+                  <FaUsers className="h-5 w-5 mr-2" />
+                  Sınıflar
+                </h2>
+              </div>
+
+              <div className="space-y-3">
+                <div className="relative">
+                  <ClassroomSelector
+                    selectedClassroom={selectedClassroom}
+                    onClassroomChange={setSelectedClassroom}
+                  />
+                </div>
+              </div>
+            </div>
+
             {/* Seat Grid */}
-            <div className="flex-1 p-6 overflow-auto">
+            <div className="flex-1  overflow-auto">
               {selectedClassroom && (
                 <SeatGrid
                   classroom={selectedClassroom}

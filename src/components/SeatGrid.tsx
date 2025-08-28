@@ -139,81 +139,6 @@ export const SeatGrid: React.FC<SeatGridProps> = ({
     }
   };
 
-  // Circle layout için özel render
-  if (classroom.layoutType === "Circle") {
-    return (
-      <div className="flex flex-col items-center space-y-8">
-        {/* Classroom Header */}
-        <div className="text-center">
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
-            {classroom.name}
-          </h3>
-        </div>
-
-        {/* Circle Layout */}
-        <div
-          className="relative"
-          style={{
-            width: `${classroom.columns * 48}px`,
-            height: `${classroom.rows * 48}px`,
-          }}
-        >
-          {/* Merkezdeki Öğretmen/Tahta Alanı - Daha büyük */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gray-800 rounded-full flex items-center justify-center text-white font-bold text-xs border-4 border-gray-600 shadow-lg">
-            ÖĞRETMEN
-          </div>
-
-          {/* Merkez çember çizgisi - görsel rehber */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 border-2 border-dashed border-gray-300 rounded-full opacity-30"></div>
-
-          {/* Çember şeklindeki koltuklar */}
-          {seats.map((seat) => {
-            const student = seat.studentId
-              ? students.find((s) => s.id === seat.studentId)
-              : undefined;
-            const x = seat.col * 48;
-            const y = seat.row * 48;
-
-            return (
-              <div
-                key={seat.id}
-                className="absolute"
-                style={{ left: `${x}px`, top: `${y}px` }}
-              >
-                <DroppableSeat
-                  seat={seat}
-                  student={student}
-                  isSelected={selectedSeats.includes(seat.id)}
-                  onSelect={() => handleSeatSelect(seat.id)}
-                  onRemoveStudent={() => onRemoveStudent(seat.id)}
-                />
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Legend */}
-        <div className="flex items-center space-x-6 text-sm text-gray-600">
-          <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 bg-gray-100 border-2 border-gray-300 rounded"></div>
-            <span>Boş</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 bg-primary border-2 border-primary rounded"></div>
-            <span>Dolu</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 bg-red-100 border-2 border-red-300 rounded"></div>
-            <span>Bloke</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-6 h-6 bg-gray-800 rounded-full"></div>
-            <span>Öğretmen</span>
-          </div>
-        </div>
-      </div>
-    );
-  }
   // Create grid layout
   const grid = Array.from({ length: classroom.rows }, (_, row) =>
     Array.from({ length: classroom.columns }, (_, col) => {
@@ -226,16 +151,10 @@ export const SeatGrid: React.FC<SeatGridProps> = ({
   );
 
   return (
-    <div className="flex flex-col items-center space-y-8">
-      {/* Classroom Header */}
-      <div className="text-center">
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">
-          {classroom.name}
-        </h3>
-        <div className="w-64 h-5 items-center bg-gray-800 rounded-sm mx-auto mb-4">
-          <div className="text-xs text-white justify-center text-center">
-            TAHTA
-          </div>
+    <div className="flex flex-col items-center space-y-4">
+      <div className="w-64 mt-4 h-5 items-center bg-gray-800 rounded-sm">
+        <div className="text-xs text-white justify-center text-center">
+          TAHTA
         </div>
       </div>
 
@@ -269,10 +188,6 @@ export const SeatGrid: React.FC<SeatGridProps> = ({
         <div className="flex items-center space-x-2">
           <div className="w-4 h-4 bg-primary border-2 border-primary rounded"></div>
           <span>Dolu</span>
-        </div>
-        <div className="flex items-center space-x-2">
-          <div className="w-4 h-4 bg-red-100 border-2 border-red-300 rounded"></div>
-          <span>Bloke</span>
         </div>
       </div>
     </div>

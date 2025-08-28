@@ -44,9 +44,7 @@ const DraggableStudent: React.FC<{ student: Student }> = ({ student }) => {
 };
 
 export const StudentList: React.FC<StudentListProps> = ({
-  students,
-  searchQuery,
-  selectedTags,
+  students
 }) => {
   return (
     <div className="flex-1 overflow-auto p-4">
