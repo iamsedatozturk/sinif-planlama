@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { FaCheck, FaChevronDown, FaChevronUp } from "react-icons/fa";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/utils/utils";
 
 const Select = SelectPrimitive.Root;
 

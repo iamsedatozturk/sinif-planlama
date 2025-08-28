@@ -7,15 +7,6 @@ import {
   SelectValue,
 } from "@/shared/components/ui/select";
 
-interface Classroom {
-  id: string;
-  name: string;
-  layoutType: string;
-  rows: number;
-  columns: number;
-  capacity: number;
-}
-
 interface ClassroomSelectorProps {
   selectedClassroom: Classroom | null;
   onClassroomChange: (classroom: Classroom | null) => void;

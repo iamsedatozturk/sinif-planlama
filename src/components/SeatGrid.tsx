@@ -7,7 +7,7 @@ import {
 } from "@/shared/components/ui/avatar";
 import { Button } from "@/shared/components/ui/button";
 import { FaTimes } from "react-icons/fa";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/utils/utils";
 
 interface Student {
   id: string;

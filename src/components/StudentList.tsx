@@ -6,20 +6,6 @@ import {
   AvatarImage,
 } from "@/shared/components/ui/avatar";
 
-interface Student {
-  id: string;
-  fullName: string;
-  photoUrl: string | null;
-  tags: string[];
-  isActive: boolean;
-}
-
-interface StudentListProps {
-  students: Student[];
-  searchQuery: string;
-  selectedTags: string[];
-}
-
 const DraggableStudent: React.FC<{ student: Student }> = ({ student }) => {
   const { attributes, listeners, setNodeRef, transform, isDragging } =
     useDraggable({

@@ -19,23 +19,6 @@ import {
   FaUserTimes,
 } from "react-icons/fa";
 
-interface Student {
-  id: string;
-  fullName: string;
-  photoUrl: string | null;
-  tags: string[];
-  isActive: boolean;
-}
-
-interface Seat {
-  id: string;
-  row: number;
-  col: number;
-  label: string;
-  isBlocked: boolean;
-  studentId?: string;
-}
-
 interface QuickActionsProps {
   selectedSeats: string[];
   seats: Seat[];
