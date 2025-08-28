@@ -1,9 +1,7 @@
 import React from "react";
 import { useDroppable } from "@dnd-kit/core";
 import { Avatar } from "@/components/ui/Avatar";
-import { Button } from "@/components/ui/Button";
 import { FaTimes } from "react-icons/fa";
-import { cn } from "@/utils/utils";
 import { Seat, SeatGridProps, Student } from "@/proxy/models";
 
 const DroppableSeat: React.FC<{
@@ -27,41 +25,38 @@ const DroppableSeat: React.FC<{
       <div
         ref={setNodeRef}
         onClick={canSelect ? onSelect : undefined}
-        className={cn(
-          "relative w-12 h-12 rounded-full border-2 transition-all duration-300 flex items-center justify-center transform",
-          canSelect ? "cursor-pointer" : "cursor-default",
-          {
-            // Empty seat
-            "bg-gray-100 border-gray-300 hover:border-primary hover:bg-gray-50":
-              canDrop && !isOver,
-
-            // Blocked seat
-            "bg-red-100 border-red-300 text-red-700 cursor-not-allowed opacity-75":
-              isBlocked,
-            // Selected
-            "ring-2 ring-orange-400 ring-offset-2 bg-orange-50 border-orange-400":
-              isSelected && canSelect,
-            // Drag over - büyük visual feedback
-            "scale-125 ring-4 ring-green-400 ring-offset-4 bg-green-50 border-green-400 shadow-lg z-10":
-              isOver && canDrop && isEmpty,
-            // Drag over occupied seat - farklı renk
-            "scale-125 ring-4 ring-yellow-400 ring-offset-4 bg-yellow-50 border-yellow-400 shadow-lg z-10":
-              isOver && canDrop && !isEmpty,
-            // Invalid drop target
-            "ring-4 ring-red-400 ring-offset-2 bg-red-50 border-red-400 shake":
-              isOver && !canDrop,
-          }
-        )}
+        className={
+          "relative w-12 h-12 rounded-full border-2 transition-all duration-300 flex items-center justify-center transform " +
+          (canSelect ? "cursor-pointer " : "cursor-default ") +
+          (canDrop && !isOver
+            ? "bg-gray-100 border-gray-300 hover:border-primary hover:bg-gray-50 "
+            : "") +
+          (isBlocked
+            ? "bg-red-100 border-red-300 text-red-700 cursor-not-allowed opacity-75 "
+            : "") +
+          (isSelected && canSelect
+            ? "ring-2 ring-orange-400 ring-offset-2 bg-orange-50 border-orange-400 "
+            : "") +
+          (isOver && canDrop && isEmpty
+            ? "scale-125 ring-4 ring-green-400 ring-offset-4 bg-green-50 border-green-400 shadow-lg z-10 "
+            : "") +
+          (isOver && canDrop && !isEmpty
+            ? "scale-125 ring-4 ring-yellow-400 ring-offset-4 bg-yellow-50 border-yellow-400 shadow-lg z-10 "
+            : "") +
+          (isOver && !canDrop
+            ? "ring-4 ring-red-400 ring-offset-2 bg-red-50 border-red-400 shake "
+            : "")
+        }
         style={{
           zIndex: isOver ? 10 : 1,
         }}
       >
         {student ? (
           <Avatar
-            className={cn(
-              "w-full h-full rounded-full object-cover transition-all duration-200",
+            className={
+              "w-full h-full rounded-full object-cover transition-all duration-200 " +
               "group-hover:ring-2 group-hover:ring-blue-500 group-hover:ring-offset-1"
-            )}
+            }
             src={student.photoUrl || undefined}
           >
             {student.fullName
@@ -71,10 +66,10 @@ const DroppableSeat: React.FC<{
           </Avatar>
         ) : (
           <span
-            className={cn(
-              "text-xs font-medium transition-all duration-300",
-              isOver && canDrop ? "text-green-700 font-bold" : "text-gray-600"
-            )}
+            className={
+              "text-xs font-medium transition-all duration-300 " +
+              (isOver && canDrop ? "text-green-700 font-bold" : "text-gray-600")
+            }
           >
             {seat.label}
           </span>
