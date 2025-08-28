@@ -19,6 +19,7 @@ import { ClassroomSelector } from "./ClassroomSelector";
 import { LayoutSelector } from "./LayoutSelector";
 import { QuickActions } from "./QuickActions";
 import { mockStudents } from "@/data/students";
+import { Classroom, Seat, Student } from "@/proxy/models";
 
 export const ClassroomPlannerPage: React.FC = () => {
   const [students, setStudents] = useState<Student[]>([]);
@@ -49,6 +50,10 @@ export const ClassroomPlannerPage: React.FC = () => {
             col,
             label,
             isBlocked: false,
+            seatType: "Standard",
+            concurrencyStamp: "",
+            creationTime: new Date().toISOString(),
+            lastModificationTime: new Date().toISOString(),
           });
         }
       }
@@ -244,18 +249,7 @@ export const ClassroomPlannerPage: React.FC = () => {
             {/* Toolbar */}
             <div className="bg-white border-b border-gray-200 px-6 py-4">
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
-                  <LayoutSelector
-                    selectedLayout={selectedClassroom?.layoutType || "Theater"}
-                    onLayoutChange={(layout) => {
-                      // Handle layout change
-                    }}
-                  />
-                  <div className="text-sm text-gray-600">
-                    {seats.filter((s) => s.studentId).length} / {seats.length}{" "}
-                    koltuk dolu
-                  </div>
-                </div>
+                <div className="flex items-center space-x-4"></div>
 
                 <div className="flex items-center space-x-2">
                   <Button variant="outline" size="sm" onClick={handleClearAll}>

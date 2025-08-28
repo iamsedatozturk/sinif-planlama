@@ -18,6 +18,7 @@ import {
   FaUsers,
   FaUserTimes,
 } from "react-icons/fa";
+import { Seat, Student } from "@/proxy/models";
 
 interface QuickActionsProps {
   selectedSeats: string[];
