@@ -1,10 +1,7 @@
-/**
- * Main App Component - Sınıf Planlama Uygulaması
- */
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { LanguageProvider } from '@/shared/lang/LanguageProvider';
-import { ClassroomPlannerPage } from '@/features/classroom/components/ClassroomPlannerPage';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { LanguageProvider } from "@/shared/lang/LanguageProvider";
+import { ClassroomPlannerPage } from "./components/ClassroomPlannerPage";
 
 export const App: React.FC = () => {
   return (

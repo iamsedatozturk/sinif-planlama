@@ -1,6 +1,3 @@
-/**
- * Layout Selector Component
- */
 import React from "react";
 import {
   Select,

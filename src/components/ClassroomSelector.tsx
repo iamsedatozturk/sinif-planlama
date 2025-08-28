@@ -1,6 +1,3 @@
-/**
- * Classroom Selector Component
- */
 import React from "react";
 import {
   Select,
@@ -9,8 +6,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/shared/components/ui/select";
-import { Button } from "@/shared/components/ui/button";
-import { FaPlus } from "react-icons/fa";
 
 interface Classroom {
   id: string;
@@ -100,7 +95,7 @@ export const ClassroomSelector: React.FC<ClassroomSelectorProps> = ({
             {selectedClassroom && (
               <div className="flex items-center justify-between w-full">
                 <span>{selectedClassroom.name}</span>
-                <span className="text-xs text-gray-500">
+                <span className="ml-3 text-xs text-gray-500">
                   {selectedClassroom.capacity} koltuk
                 </span>
               </div>

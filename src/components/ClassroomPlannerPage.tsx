@@ -1,6 +1,3 @@
-/**
- * Classroom Planner Page - Ana Sınıf Planlama Ekranı
- */
 import React, { useState, useEffect } from "react";
 import {
   DndContext,

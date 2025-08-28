@@ -1,6 +1,3 @@
-/**
- * Student List Component - Öğrenci Listesi
- */
 import React from "react";
 import { useDraggable } from "@dnd-kit/core";
 import {

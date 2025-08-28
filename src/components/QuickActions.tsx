@@ -1,6 +1,3 @@
-/**
- * Quick Actions Component - Hızlı İşlemler
- */
 import React from "react";
 import {
   Card,

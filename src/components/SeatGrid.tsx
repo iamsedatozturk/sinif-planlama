@@ -1,6 +1,3 @@
-/**
- * Seat Grid Component - Koltuk Düzeni
- */
 import React from "react";
 import { useDroppable } from "@dnd-kit/core";
 import {
