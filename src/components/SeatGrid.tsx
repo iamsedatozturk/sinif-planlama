@@ -4,41 +4,7 @@ import { Avatar } from "@/components/ui/Avatar";
 import { Button } from "@/components/ui/Button";
 import { FaTimes } from "react-icons/fa";
 import { cn } from "@/utils/utils";
-
-interface Student {
-  id: string;
-  fullName: string;
-  photoUrl: string | null;
-  tags: string[];
-  isActive: boolean;
-}
-
-interface Seat {
-  id: string;
-  row: number;
-  col: number;
-  label: string;
-  isBlocked: boolean;
-  studentId?: string;
-}
-
-interface Classroom {
-  id: string;
-  name: string;
-  layoutType: string;
-  rows: number;
-  columns: number;
-  capacity: number;
-}
-
-interface SeatGridProps {
-  classroom: Classroom;
-  seats: Seat[];
-  students: Student[];
-  selectedSeats: string[];
-  onSeatSelect: (seatIds: string[]) => void;
-  onRemoveStudent: (seatId: string) => void;
-}
+import { Seat, SeatGridProps, Student } from "@/proxy/models";
 
 const DroppableSeat: React.FC<{
   seat: Seat;

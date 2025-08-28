@@ -1,11 +1,10 @@
-import React from "react"
-import { Classroom } from "@/proxy/models"
-import { classrooms } from "@/data/classroom"
-import { Select } from "./ui"
+import React from "react";
+import { Classroom } from "@/proxy/models";
+import { classrooms } from "@/data/classroom";
 
 interface ClassroomSelectorProps {
-  selectedClassroom: Classroom | null
-  onClassroomChange: (classroom: Classroom | null) => void
+  selectedClassroom: Classroom | null;
+  onClassroomChange: (classroom: Classroom | null) => void;
 }
 
 export const ClassroomSelector: React.FC<ClassroomSelectorProps> = ({
@@ -14,31 +13,22 @@ export const ClassroomSelector: React.FC<ClassroomSelectorProps> = ({
 }) => {
   return (
     <div className="w-full">
-      <Select<Classroom, false>
-        value={selectedClassroom}
-        onChange={(option) => onClassroomChange(option as Classroom | null)}
-        options={classrooms}
-        getOptionValue={(option) => option.id}
-        formatOptionLabel={(option, { context }) =>
-          context === "menu" ? (
-            <div className="flex flex-col">
-              <span>{option.name}</span>
-              <span className="text-xs text-gray-500">
-                {option.layoutType} • {option.capacity} koltuk
-              </span>
-            </div>
-          ) : (
-            <div className="flex items-center justify-between w-full">
-              <span>{option.name}</span>
-              <span className="ml-3 text-xs text-gray-500">
-                {option.capacity} koltuk
-              </span>
-            </div>
+      <select
+        value={selectedClassroom?.id || ""}
+        onChange={(e) =>
+          onClassroomChange(
+            classrooms.find((c) => c.id === e.target.value) || null
           )
         }
-        placeholder="Sınıf seçin..."
-        className="w-full"
-      />
+        className="w-full px-2 py-1 text-sm border border-gray-300 rounded"
+      >
+        <option value="">Sınıf seçin...</option>
+        {classrooms.map((classroom) => (
+          <option key={classroom.id} value={classroom.id}>
+            {classroom.name} • {classroom.capacity} koltuk
+          </option>
+        ))}
+      </select>
     </div>
-  )
-}
+  );
+};

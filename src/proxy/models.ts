@@ -8,6 +8,15 @@ export interface Student {
   lastModificationTime: string;
 }
 
+export interface SeatGridProps {
+  classroom: Classroom;
+  seats: Seat[];
+  students: Student[];
+  selectedSeats: string[];
+  onSeatSelect: (seatIds: string[]) => void;
+  onRemoveStudent: (seatId: string) => void;
+}
+
 export interface StudentListProps {
   students: Student[];
   searchQuery: string;

@@ -37,10 +37,10 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
   return (
     <div className="p-4 space-y-4">
       {/* Statistics */}
-      <Card>
-        <header className="pb-3">
-          <h3 className="text-sm">İstatistikler</h3>
-        </header>
+      <Card
+        bodyClass="md:p-6"
+        header={<h3 className="text-sm">İstatistikler</h3>}
+      >
         <body className="space-y-2">
           <div className="flex justify-between text-sm">
             <span className="text-gray-600">Toplam koltuk:</span>
@@ -79,10 +79,10 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
       </Card>
 
       {/* Selection Info */}
-      <Card>
-        <header className="pb-3">
-          <h3 className="text-sm">Seçim Bilgisi</h3>
-        </header>
+      <Card
+        bodyClass="md:p-6"
+        header={<h3 className="text-sm">Seçim Bilgisi</h3>}
+      >
         <body className="space-y-2">
           <div className="flex justify-between text-sm">
             <span className="text-gray-600">Seçili koltuk:</span>
@@ -97,13 +97,15 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
 
       {/* Selected Students */}
       {selectedStudents.length > 0 && (
-        <Card>
-          <header className="pb-3">
+        <Card
+          bodyClass="md:p-6"
+          header={
             <h3 className="text-sm flex items-center">
               <FaUsers className="h-4 w-4 mr-2" />
               Seçili Öğrenciler
             </h3>
-          </header>
+          }
+        >
           <body className="space-y-3">
             {selectedStudents.map((student) => (
               <div key={student.id} className="flex items-center space-x-3">
@@ -124,17 +126,17 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
       )}
 
       {/* Quick Actions */}
-      <Card>
-        <header className="pb-3">
-          <h3 className="text-sm">Hızlı İşlemler</h3>
-        </header>
+      <Card
+        bodyClass="md:p-6"
+        header={<h3 className="text-sm">Hızlı İşlemler</h3>}
+      >
         <body className="space-y-2">
           {selectedStudents.length > 0 && (
             <>
               <Button
                 variant="default"
                 size="sm"
-                className="w-full justify-start"
+                className="flex flex-row w-full justify-center items-center"
               >
                 <FaPhone className="h-4 w-4 mr-2" />
                 Toplu Arama
@@ -142,7 +144,7 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
               <Button
                 variant="default"
                 size="sm"
-                className="w-full justify-start"
+                className="flex flex-row w-full justify-center items-center"
               >
                 <FaEnvelope className="h-4 w-4 mr-2" />
                 E-posta Gönder
@@ -150,7 +152,7 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
               <Button
                 variant="default"
                 size="sm"
-                className="w-full justify-start"
+                className="flex flex-row w-full justify-center items-center"
               >
                 <FaRegCommentDots className="h-4 w-4 mr-2" />
                 SMS Gönder
@@ -163,7 +165,7 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
               <Button
                 variant="default"
                 size="sm"
-                className="w-full justify-start"
+                className="flex flex-row w-full justify-center items-center"
                 onClick={onRemoveSelectedStudents}
               >
                 <FaUserTimes className="h-4 w-4 mr-2" />

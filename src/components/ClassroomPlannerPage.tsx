@@ -8,7 +8,7 @@ import {
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Avatar } from "@/components/ui/Avatar";
-import { FaUsers, FaSearch, FaThLarge, FaUndo, FaSave } from "react-icons/fa";
+import { FaUsers, FaSearch, FaThLarge, FaUndo, FaSave, FaAccusoft, FaBolt } from "react-icons/fa";
 import { StudentList } from "./StudentList";
 import { SeatGrid } from "./SeatGrid";
 import { ClassroomSelector } from "./ClassroomSelector";
@@ -191,7 +191,10 @@ export const ClassroomPlannerPage: React.FC = () => {
           </div>
 
           <div className="flex items-center space-x-3">
-            <Button size="sm">
+            <Button
+              size="sm"
+              className="flex flex-row w-full justify-center items-center"
+            >
               <FaSave className="h-4 w-4 mr-2" />
               Kaydet
             </Button>
@@ -247,12 +250,23 @@ export const ClassroomPlannerPage: React.FC = () => {
                 <div className="flex items-center space-x-4"></div>
 
                 <div className="flex items-center space-x-2">
-                  <Button variant="solid" size="sm" onClick={handleClearAll}>
+                  <Button
+                    variant="default"
+                    size="sm"
+                    className="flex flex-row w-full justify-center items-center"
+                    onClick={handleClearAll}
+                  >
                     <FaUndo className="h-4 w-4 mr-2" />
                     Temizle
                   </Button>
-                  <Button size="sm" onClick={handleAutoAssign}>
-                    Otomatik Ata
+                  <Button
+                    variant="default"
+                    size="sm"
+                    className="flex flex-row w-full justify-center items-center"
+                    onClick={handleAutoAssign}
+                  >
+                    <FaBolt className="h-4 w-4 mr-2" />
+                    Oto. Ata
                   </Button>
                 </div>
               </div>
