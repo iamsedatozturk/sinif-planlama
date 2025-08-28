@@ -21,7 +21,7 @@ const DraggableStudent: React.FC<{ student: Student }> = ({ student }) => {
       style={style}
       {...listeners}
       {...attributes}
-      className={`p-3 border border-gray-200 rounded-lg hover:border-primary hover:shadow-md transition-all duration-300 cursor-grab active:cursor-grabbing transform hover:scale-105 ${
+      className={`transition-all duration-300 cursor-grab active:cursor-grabbing transform hover:scale-105 ${
         isDragging ? "opacity-30 scale-110 rotate-3 shadow-2xl z-50" : ""
       }`}
     >

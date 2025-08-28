@@ -28,15 +28,13 @@ const DroppableSeat: React.FC<{
         ref={setNodeRef}
         onClick={canSelect ? onSelect : undefined}
         className={cn(
-          "relative w-12 h-12 rounded-lg border-2 transition-all duration-300 flex items-center justify-center transform",
+          "relative w-12 h-12 rounded-full border-2 transition-all duration-300 flex items-center justify-center transform",
           canSelect ? "cursor-pointer" : "cursor-default",
           {
             // Empty seat
             "bg-gray-100 border-gray-300 hover:border-primary hover:bg-gray-50":
               canDrop && !isOver,
-            // Occupied seat
-            "bg-primary border-primary text-primary-foreground hover:bg-primary/90":
-              !isEmpty && !isBlocked,
+
             // Blocked seat
             "bg-red-100 border-red-300 text-red-700 cursor-not-allowed opacity-75":
               isBlocked,
@@ -59,7 +57,13 @@ const DroppableSeat: React.FC<{
         }}
       >
         {student ? (
-          <Avatar className="h-8 w-8" src={student.photoUrl || undefined}>
+          <Avatar
+            className={cn(
+              "w-full h-full rounded-full object-cover transition-all duration-200",
+              "group-hover:ring-2 group-hover:ring-blue-500 group-hover:ring-offset-1"
+            )}
+            src={student.photoUrl || undefined}
+          >
             {student.fullName
               .split(" ")
               .map((n) => n[0])
@@ -94,17 +98,19 @@ const DroppableSeat: React.FC<{
 
       {/* Remove button - sadece dolu koltuklar için */}
       {student && (
-        <Button
-          size="sm"
-          variant="default"
-          className="absolute -top-2 -right-2 h-5 w-5 p-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-20"
+        <button
           onClick={(e) => {
             e.stopPropagation();
             onRemoveStudent();
           }}
+          className="absolute -top-2 -right-2 flex items-center justify-center 
+               w-6 h-6 rounded-full bg-red-600 text-white 
+               hover:bg-red-700 shadow-md
+               opacity-0 group-hover:opacity-100 
+               transition-opacity duration-200 z-20"
         >
           <FaTimes className="h-3 w-3" />
-        </Button>
+        </button>
       )}
 
       {/* Tooltip on hover */}
@@ -226,8 +232,10 @@ export const SeatGrid: React.FC<SeatGridProps> = ({
         <h3 className="text-lg font-semibold text-gray-900 mb-2">
           {classroom.name}
         </h3>
-        <div className="w-32 h-3 bg-gray-800 rounded-sm mx-auto mb-4">
-          <div className="text-xs text-white text-center leading-3">TAHTA</div>
+        <div className="w-64 h-5 items-center bg-gray-800 rounded-sm mx-auto mb-4">
+          <div className="text-xs text-white justify-center text-center">
+            TAHTA
+          </div>
         </div>
       </div>
 

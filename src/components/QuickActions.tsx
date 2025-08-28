@@ -38,7 +38,7 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
     <div className="p-4 space-y-4">
       {/* Statistics */}
       <Card
-        bodyClass="md:p-6"
+        bodyClass="md:p-3"
         header={<h3 className="text-sm">İstatistikler</h3>}
       >
         <body className="space-y-2">
@@ -80,7 +80,7 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
 
       {/* Selection Info */}
       <Card
-        bodyClass="md:p-6"
+        bodyClass="md:p-3"
         header={<h3 className="text-sm">Seçim Bilgisi</h3>}
       >
         <body className="space-y-2">
@@ -95,10 +95,63 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
         </body>
       </Card>
 
+      {/* Quick Actions */}
+      {selectedStudents.length > 0 && (
+        <Card
+          bodyClass="md:p-3"
+          header={<h3 className="text-sm">Hızlı İşlemler</h3>}
+        >
+          <body className="space-y-2">
+            {selectedStudents.length > 0 && (
+              <>
+                <Button
+                  variant="default"
+                  size="sm"
+                  className="flex flex-row w-full justify-center items-center"
+                >
+                  <FaPhone className="h-4 w-4 mr-2" />
+                  Toplu Arama
+                </Button>
+                <Button
+                  variant="default"
+                  size="sm"
+                  className="flex flex-row w-full justify-center items-center"
+                >
+                  <FaEnvelope className="h-4 w-4 mr-2" />
+                  E-posta Gönder
+                </Button>
+                <Button
+                  variant="default"
+                  size="sm"
+                  className="flex flex-row w-full justify-center items-center"
+                >
+                  <FaRegCommentDots className="h-4 w-4 mr-2" />
+                  SMS Gönder
+                </Button>
+              </>
+            )}
+
+            {selectedSeats.length > 0 && (
+              <>
+                <Button
+                  variant="default"
+                  size="sm"
+                  className="flex flex-row w-full justify-center items-center"
+                  onClick={onRemoveSelectedStudents}
+                >
+                  <FaUserTimes className="h-4 w-4 mr-2" />
+                  Atamaları Kaldır
+                </Button>
+              </>
+            )}
+          </body>
+        </Card>
+      )}
+
       {/* Selected Students */}
       {selectedStudents.length > 0 && (
         <Card
-          bodyClass="md:p-6"
+          bodyClass="md:p-3"
           header={
             <h3 className="text-sm flex items-center">
               <FaUsers className="h-4 w-4 mr-2" />
@@ -124,57 +177,6 @@ export const QuickActions: React.FC<QuickActionsProps> = ({
           </body>
         </Card>
       )}
-
-      {/* Quick Actions */}
-      <Card
-        bodyClass="md:p-6"
-        header={<h3 className="text-sm">Hızlı İşlemler</h3>}
-      >
-        <body className="space-y-2">
-          {selectedStudents.length > 0 && (
-            <>
-              <Button
-                variant="default"
-                size="sm"
-                className="flex flex-row w-full justify-center items-center"
-              >
-                <FaPhone className="h-4 w-4 mr-2" />
-                Toplu Arama
-              </Button>
-              <Button
-                variant="default"
-                size="sm"
-                className="flex flex-row w-full justify-center items-center"
-              >
-                <FaEnvelope className="h-4 w-4 mr-2" />
-                E-posta Gönder
-              </Button>
-              <Button
-                variant="default"
-                size="sm"
-                className="flex flex-row w-full justify-center items-center"
-              >
-                <FaRegCommentDots className="h-4 w-4 mr-2" />
-                SMS Gönder
-              </Button>
-            </>
-          )}
-
-          {selectedSeats.length > 0 && (
-            <>
-              <Button
-                variant="default"
-                size="sm"
-                className="flex flex-row w-full justify-center items-center"
-                onClick={onRemoveSelectedStudents}
-              >
-                <FaUserTimes className="h-4 w-4 mr-2" />
-                Atamaları Kaldır
-              </Button>
-            </>
-          )}
-        </body>
-      </Card>
     </div>
   );
 };

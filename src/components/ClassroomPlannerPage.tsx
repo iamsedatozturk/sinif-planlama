@@ -8,7 +8,15 @@ import {
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Avatar } from "@/components/ui/Avatar";
-import { FaUsers, FaSearch, FaThLarge, FaUndo, FaSave, FaAccusoft, FaBolt } from "react-icons/fa";
+import {
+  FaUsers,
+  FaSearch,
+  FaThLarge,
+  FaUndo,
+  FaSave,
+  FaAccusoft,
+  FaBolt,
+} from "react-icons/fa";
 import { StudentList } from "./StudentList";
 import { SeatGrid } from "./SeatGrid";
 import { ClassroomSelector } from "./ClassroomSelector";
@@ -192,6 +200,25 @@ export const ClassroomPlannerPage: React.FC = () => {
 
           <div className="flex items-center space-x-3">
             <Button
+              variant="default"
+              size="sm"
+              className="flex flex-row w-full justify-center items-center"
+              onClick={handleClearAll}
+            >
+              <FaUndo className="h-4 w-4 mr-2" />
+              Temizle
+            </Button>
+            <Button
+              variant="default"
+              size="sm"
+              className="flex items-center px-3 whitespace-nowrap"
+              onClick={handleAutoAssign}
+            >
+              <FaBolt className="h-4 w-4 mr-2 text-yellow-400" />
+              Otomatik Ata
+            </Button>
+
+            <Button
               size="sm"
               className="flex flex-row w-full justify-center items-center"
             >
@@ -226,6 +253,7 @@ export const ClassroomPlannerPage: React.FC = () => {
                 <div className="relative">
                   <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                   <Input
+                    size="sm"
                     placeholder="Öğrenci ara..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
@@ -244,34 +272,6 @@ export const ClassroomPlannerPage: React.FC = () => {
 
           {/* Main Content - Seat Grid */}
           <div className="flex-1 flex flex-col">
-            {/* Toolbar */}
-            <div className="bg-white border-b border-gray-200 px-6 py-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4"></div>
-
-                <div className="flex items-center space-x-2">
-                  <Button
-                    variant="default"
-                    size="sm"
-                    className="flex flex-row w-full justify-center items-center"
-                    onClick={handleClearAll}
-                  >
-                    <FaUndo className="h-4 w-4 mr-2" />
-                    Temizle
-                  </Button>
-                  <Button
-                    variant="default"
-                    size="sm"
-                    className="flex flex-row w-full justify-center items-center"
-                    onClick={handleAutoAssign}
-                  >
-                    <FaBolt className="h-4 w-4 mr-2" />
-                    Oto. Ata
-                  </Button>
-                </div>
-              </div>
-            </div>
-
             {/* Seat Grid */}
             <div className="flex-1 p-6 overflow-auto">
               {selectedClassroom && (
